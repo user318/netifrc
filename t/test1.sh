@@ -4,7 +4,7 @@ exec -- 2>&1
 
 set -x
 
-docker ps
+docker ps -a
 docker run --privileged -i alpine:latest <<'DOCKER'
 apk add bash iproute2
 bash <<'BASH'
@@ -19,9 +19,10 @@ ip addr show
 BASH
 DOCKER
 
-docker run --privileged --name testgentoo -d gentoo/stage3:latest
+docker network list
+docker run --privileged --network none --name testgentoo -d gentoo/stage3:latest /sbin/init
 sleep 5
-docker ps
+docker ps -a
 docker logs testgentoo
 docker exec -i testgentoo /bin/bash <<'DOCKER'
 set -x
