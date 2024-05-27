@@ -4,20 +4,20 @@ exec -- 2>&1
 
 set -x
 
-docker ps
-docker run -i alpine:latest <<'DOCKER'
-apk add bash iproute2
-bash <<'BASH'
-set -x
-id
-ip netns add a
-ip netns list
-ip -n a link add d0 type dummy
-ip -n a link set d0 up
-ip -n a addr show
-ip addr show
-BASH
-DOCKER
+#docker ps
+#docker run -i alpine:latest <<'DOCKER'
+#apk add bash iproute2
+#bash <<'BASH'
+#set -x
+#id
+#ip netns add a
+#ip netns list
+#ip -n a link add d0 type dummy
+#ip -n a link set d0 up
+#ip -n a addr show
+#ip addr show
+#BASH
+#DOCKER
 
 pwd
 ls -lha
@@ -26,6 +26,8 @@ git status
 
 sudo bash <<'BASH'
 set -x
+
+apt-get install -y qemu-kvm cpu-checker
 
 #cat /proc/cpuinfo
 lscpu
