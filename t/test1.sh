@@ -19,11 +19,11 @@ ip addr show
 BASH
 DOCKER
 
-docker run --privileged --name g -d gentoo/stage3:latest
+docker run --privileged --name testgentoo -d gentoo/stage3:latest
 sleep 5
 docker ps
-docker logs g
-docker exec -i g /bin/bash <<'DOCKER'
+docker logs testgentoo
+docker exec -i testgentoo /bin/bash <<'DOCKER'
 set -x
 mount
 rc-status
