@@ -17,10 +17,13 @@ BASH
 DOCKER
 
 cat /proc/cpuinfo
+env
 ps -ef
+
 pwd
 ls -lha
-env
+git branch
+git status
 
 ip netns add a
 ip netns list
