@@ -1,0 +1,10 @@
+name: test1
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: run
+        run: ./t/test1.sh
