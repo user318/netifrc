@@ -4,7 +4,7 @@ topology:
 
   defaults:
     kind: linux
-    image: netifrc-gentoo
+    image: test-gentoo
     entrypoint: /sbin/init
     image-pull-policy: Never
     network-mode: none
