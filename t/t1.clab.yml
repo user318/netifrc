@@ -6,7 +6,7 @@ topology:
     kind: linux
     image: test-gentoo
     entrypoint: /sbin/init
-    image-pull-policy: Never
+    image-pull-policy: IfNotPresent
     network-mode: none
 
   nodes:

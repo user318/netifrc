@@ -28,16 +28,22 @@ cd t && sudo clab deploy
 docker exec -i clab-t1-g1 /bin/bash <<'DOCKER'
 set -x
 ip addr show
-ip link set eth0 up
-ip addr add 192.168.0.1/24 dev eth0
+cat >/etc/conf.d/net <<'EOF'
+config_eth0="192.168.0.1/24"
+EOF
+ln -s net.lo /etc/init.d/net.eth0
+/etc/init.d/net.eth0 start
 ip addr show
 DOCKER
 
 docker exec -i clab-t1-g2 /bin/bash <<'DOCKER'
 set -x
 ip addr show
-ip link set eth0 up
-ip addr add 192.168.0.2/24 dev eth0
+cat >/etc/conf.d/net <<'EOF'
+config_eth0="192.168.0.2/24"
+EOF
+ln -s net.lo /etc/init.d/net.eth0
+/etc/init.d/net.eth0 start
 ip addr show
 ping -c4 192.168.0.1
 DOCKER
