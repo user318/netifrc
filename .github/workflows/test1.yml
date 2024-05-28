@@ -8,5 +8,7 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
-      - name: run
-        run: ./t/test2.sh
+      - name: prepare
+        run: ./t/prepare.sh
+      - name: test
+        run: ./t/test1.sh

@@ -1,0 +1,17 @@
+name: t1
+
+topology:
+
+  defaults:
+    kind: linux
+    image: netifrc-gentoo
+    entrypoint: /sbin/init
+    image-pull-policy: Never
+    network-mode: none
+
+  nodes:
+    g1:
+    g2:
+
+  links:
+    - endpoints: ["g1:eth0","g2:eth0"]
