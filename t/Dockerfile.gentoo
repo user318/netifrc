@@ -8,7 +8,8 @@ RUN \
 	sed -i 's/^c[0-9]/#&/' /etc/inittab && \
 	rc-update del netmount default && \
 	chown portage /var/cache/distfiles && \
-	echo 'FEATURES="-ipc-sandbox -network-sandbox -pid-sandbox -binpkg-request-signature getbinpkg"' >>/etc/portage/make.conf && \
+	echo 'FEATURES="getbinpkg binpkg-ignore-signature -binpkg-request-signature -ipc-sandbox -network-sandbox -pid-sandbox"' >>/etc/portage/make.conf && \
+	echo 'PORTAGE_TRUST_HELPER=/bin/true' >>/etc/portage/make.conf && \
 	echo 'EGIT_CLONE_TYPE=shallow' >>/etc/portage/make.conf && \
 	emerge dev-vcs/git
 
