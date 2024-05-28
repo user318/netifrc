@@ -15,7 +15,8 @@ docker exec -i test1 /bin/bash <<'DOCKER'
 set -x
 mount
 rc-status
-equery l netifrc
+qlist -v netifrc
+qfile -v /etc/init.d/net.lo
 id
 ip netns add a
 ip netns list

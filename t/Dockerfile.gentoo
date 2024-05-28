@@ -17,5 +17,7 @@ ADD . /assets/netifrc/
 
 RUN \
 	echo 'net-misc/netifrc **' >/etc/portage/package.accept_keywords/netifrc && \
+	echo 'EGIT_OVERRIDE_REPO_PROJ_NETIFRC=/assets/netifrc' >>/etc/portage/make.conf && \
 	git config --system --add safe.directory '*' && \
-	EGIT_OVERRIDE_REPO_PROJ_NETIFRC=/assets/netifrc emerge -vg net-misc/netifrc
+	emerge -vg net-misc/netifrc && \
+	etc-update --automode -5 /etc/init.d/net.lo
