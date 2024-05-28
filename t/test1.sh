@@ -46,6 +46,11 @@ ln -s net.lo /etc/init.d/net.eth0
 /etc/init.d/net.eth0 start
 ip addr show
 ping -c4 192.168.0.1
+ip netns add a
+ip netns list
+ip -n a link add d0 type dummy
+ip -n a link set d0 up
+ip -n a addr show
 DOCKER
 
 echo finish

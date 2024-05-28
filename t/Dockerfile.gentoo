@@ -7,11 +7,10 @@ COPY --from=portage /var/db/repos/gentoo /var/db/repos/gentoo
 RUN \
 	sed -i 's/^c[0-9]/#&/' /etc/inittab && \
 	rc-update del netmount default && \
-	getuto && \
 	chown portage /var/cache/distfiles && \
-	echo 'FEATURES="-ipc-sandbox -network-sandbox -pid-sandbox"' >>/etc/portage/make.conf && \
+	echo 'FEATURES="-ipc-sandbox -network-sandbox -pid-sandbox -binpkg-request-signature getbinpkg"' >>/etc/portage/make.conf && \
 	echo 'EGIT_CLONE_TYPE=shallow' >>/etc/portage/make.conf && \
-	emerge -g dev-vcs/git
+	emerge dev-vcs/git
 
 ADD . /assets/netifrc/
 
@@ -19,5 +18,5 @@ RUN \
 	echo 'net-misc/netifrc **' >/etc/portage/package.accept_keywords/netifrc && \
 	echo 'EGIT_OVERRIDE_REPO_PROJ_NETIFRC=/assets/netifrc' >>/etc/portage/make.conf && \
 	git config --system --add safe.directory '*' && \
-	emerge -vg net-misc/netifrc && \
+	emerge -v net-misc/netifrc && \
 	etc-update --automode -5 /etc/init.d/net.lo
