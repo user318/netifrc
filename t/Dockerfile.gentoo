@@ -10,8 +10,8 @@ RUN \
 	getuto && \
 	chown portage /var/cache/distfiles && \
 	echo 'FEATURES="-ipc-sandbox -network-sandbox -pid-sandbox"' >>/etc/portage/make.conf && \
+	echo 'EGIT_CLONE_TYPE=shallow' >>/etc/portage/make.conf && \
 	emerge -g dev-vcs/git
-#	rc-update del sysctl boot && \
 
 ADD . /assets/netifrc/
 
