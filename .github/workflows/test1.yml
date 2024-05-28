@@ -9,4 +9,4 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
       - name: run
-        run: ./t/test1.sh
+        run: ./t/test2.sh
