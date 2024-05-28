@@ -23,9 +23,9 @@ ip -n a addr show
 ip addr show
 DOCKER
 
-cd t && clab deploy
+cd t && sudo clab deploy
 
-docker exec -i clab-t1-g1 <<'DOCKER'
+docker exec -i clab-t1-g1 /bin/bash <<'DOCKER'
 set -x
 ip addr show
 ip link set eth0 up
@@ -33,7 +33,7 @@ ip addr add 192.168.0.1/24 dev eth0
 ip addr show
 DOCKER
 
-docker exec -i clab-t1-g2 <<'DOCKER'
+docker exec -i clab-t1-g2 /bin/bash <<'DOCKER'
 set -x
 ip addr show
 ip link set eth0 up
